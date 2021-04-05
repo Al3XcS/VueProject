@@ -53510,14 +53510,19 @@ var AppStorage = /*#__PURE__*/function () {
 
   _createClass(AppStorage, [{
     key: "storeToken",
-    value: function storeToken(user) {
-      localStorage.setItem('user', token);
+    value: function storeToken(token) {
+      localStorage.setItem('token', token);
+    }
+  }, {
+    key: "storeUser",
+    value: function storeUser(user) {
+      localStorage.setItem('user', user);
     }
   }, {
     key: "store",
     value: function store(token, user) {
       this.storeToken(token);
-      this.storeToken(user);
+      this.storeUser(user);
     }
   }, {
     key: "clear",
@@ -53569,7 +53574,7 @@ var Token = /*#__PURE__*/function () {
     value: function isValid(token) {
       var payload = this.payload(token);
 
-      if (true) {
+      if (payload) {
         return payload.iss =  true ? true : undefined;
       }
 

@@ -64,7 +64,8 @@ methods:{
     .then(res => User.responseAfterLogin(res))
     .catch(error => console.log(error.response.data))
   }
-}
+ }
+ 
 }
 
 

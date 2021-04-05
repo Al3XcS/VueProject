@@ -4,18 +4,18 @@ storeToken(token){
     localStorage.setItem('token',token);
 }
 
-storeToken(user){
-    localStorage.setItem('user',token);
+storeUser(user){
+    localStorage.setItem('user',user);
 }
 
 store(token,user){
     this.storeToken(token)
-    this.storeToken(user)
+    this.storeUser(user)
 }
 
 clear(){
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
 }
 
 getToken(){
