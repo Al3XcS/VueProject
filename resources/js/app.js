@@ -10,9 +10,19 @@ Vue.use(VueRouter)
 // Router Imported
 import {routes} from './routes';
 
+
+
+
 // Import User Class
 import User from './Helpers/User';
 window.User = User
+
+// Import Notification Class
+import Notification from './Helpers/Notification';
+window.Notification = Notification
+
+
+
 
 // Sweet Alert Start
 import Swal from 'sweetalert2'
