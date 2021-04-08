@@ -3,7 +3,7 @@
   <div>
 
  <div class="row">
-  <router-link to="/employee" class="btn btn-primary">All Employee </router-link>
+  <router-link to="/supplier" class="btn btn-primary">All Supplier </router-link>
    
  </div>
 
@@ -17,10 +17,10 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4"> Employee Update</h1>
+                    <h1 class="h4 text-gray-900 mb-4"> Supplier Update</h1>
                   </div>
 
-      <form class="user" @submit.prevent="employeeUpdate" enctype="multipart/form-data">
+      <form class="user" @submit.prevent="supplierUpdate" enctype="multipart/form-data">
 
         <div class="form-group">
 
@@ -50,29 +50,8 @@
 
 
      <div class="col-md-6">
-         <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Sallary" v-model="form.sallary">
-         <small class="text-danger" v-if="errors.sallary"> {{ errors.sallary[0] }} </small>
-            </div>     
-            
-          </div>
-        </div>
-
-       
-
-
-
-        <div class="form-group">
-
-          <div class="form-row">
-            <div class="col-md-6">
-         <input type="date" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Joining Date" v-model="form.joining_date">
-  <small class="text-danger" v-if="errors.joining_date"> {{ errors.joining_date[0] }} </small>
-            </div>
-
-
-     <div class="col-md-6">
-         <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Nid" v-model="form.nid">
-         <small class="text-danger" v-if="errors.nid"> {{ errors.nid[0] }} </small>
+         <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Shop Name" v-model="form.shopname">
+         <small class="text-danger" v-if="errors.shopname"> {{ errors.shopname[0] }} </small>
             </div>     
             
           </div>
@@ -158,19 +137,17 @@
         name: '',
         email: '',
         phone: '',
-        sallary: '',
+        shopname: '',
         address: '',
         photo: '',
-        newphoto: '',
-        nid: '',
-        joining_date: ''
+        newphoto: ''
       },
       errors:{}
     }
   },
   created(){
   	let id = this.$route.params.id
-  	axios.get('/api/employee/'+id)
+  	axios.get('/api/supplier/'+id)
   	.then(({data}) => (this.form = data))
   	.catch(console.log('error'))
   },
@@ -188,11 +165,11 @@
       reader.readAsDataURL(file);
      }
     },
-  employeeUpdate(){
+  supplierUpdate(){
   	  let id = this.$route.params.id
-       axios.patch('/api/employee/'+id,this.form)
+       axios.patch('/api/supplier/'+id,this.form)
        .then(() => {
-        this.$router.push({ name: 'employee'})
+        this.$router.push({ name: 'supplier'})
         Notification.success()
        })
        .catch(error =>this.errors = error.response.data.errors)
